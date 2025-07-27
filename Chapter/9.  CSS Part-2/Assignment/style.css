@@ -1,0 +1,56 @@
+/* Qs 1 */
+#mainTopic{
+    color: blue;
+}
+
+/* Qs 2 */
+*{
+    text-align: center;
+}
+
+/* Qs 3 */
+h1,h3,h5{
+    font-style: georgia;
+}
+
+/* Qs 4 */
+.para{
+    color: white;
+    background-color: cornflowerblue;
+}
+
+/* Qs 5 */
+div button{
+    color: azure;
+    background-color: purple;
+}
+
+/* Qs 6 */
+button:hover{
+    color: blue;
+    background-color: yellow;
+}
+
+/* Qs 7 */
+p:nth-of-type(2n-1){
+    color: yellow;
+}
+
+/* Qs 8 */
+h1::first-letter{
+    color: red;
+}
+
+/* Qs 9 */
+#yes:checked + label{
+    color: darkgreen;
+}
+
+/* 
+Qs10. Order these rules according to their specificity, from least specific to most
+specific :
+- h1            (4)
+- #mainContent  (1)
+- .main         (3)
+- div .main     (2)
+*/
