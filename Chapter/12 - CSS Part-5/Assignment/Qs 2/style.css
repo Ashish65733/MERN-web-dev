@@ -1,0 +1,15 @@
+.navbar{
+    height: 50px;
+    width: 900px;
+    background-color: #f5c3cb;
+    border: 2px solid aqua;
+    border-radius: 10px;
+    display: flex;
+}
+
+.child{
+    height: 50px;
+    width: 80px;
+    font-size: 24px;
+    align-content: center;
+}
