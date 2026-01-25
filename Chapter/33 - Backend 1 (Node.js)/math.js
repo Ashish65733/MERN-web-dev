@@ -3,6 +3,8 @@ const subtract = (a,b) => a - b;
 const g = 9.8;
 const pi = 3.14;
 
+// module.exports = {};
+// exports = {}; -> This will only work if it work with objects
 let obj = {
     sum: sum,
     subtract: subtract,
