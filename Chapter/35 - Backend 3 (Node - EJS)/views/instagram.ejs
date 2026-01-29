@@ -1,0 +1,28 @@
+<%- include("includes/header.ejs") %>
+<body>
+    <h2>This page belongs to @<%= data.name %></h2>
+    <button>Follow</button>
+    <button>Message</button>
+
+    <!-- <ul>Accounts that follow you :
+        < % followers.forEach((follower) => { %>
+            <li>< %= follower %></li>
+        < % }); %>
+    </ul> -->
+
+    <p>
+        Followers : <%= data.followers %> &nbsp;&nbsp; Following : <%= data.following %> 
+    </p>
+    <hr>
+
+    <% for(let post of data.posts) { %>
+        <img src="<%= post.image %>" alt="post image">
+        <p>
+            Likes : <%= post.likes %> &nbsp;&nbsp; Comments : <%= post.comments %>
+        </p>
+    <% } %>
+
+    <%- include("includes/footer.ejs") %>
+    <script src="/app.js"></script>
+</body>
+</html>
