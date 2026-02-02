@@ -8,6 +8,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 
+const { v4: uuidv4 } = require('uuid');
+
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 let port = 8080;
 
 app.listen(port, (req, res) => {
@@ -16,19 +21,19 @@ app.listen(port, (req, res) => {
 
 let posts = [
     {
-        id: "1a",
+        id: uuidv4(),
         username : "apnacollege",
         content : "I love coding!"
     },
     {
-        id: "2b",
+        id: uuidv4(),
         username : "ashish_vankar",
         content : "Node.js is awesome!"
     },
     {
-        id: "3c",
+        id: uuidv4(),
         username : "sadie_sink",
-        content : "I love JavaScript!"
+        content : "I'm joining MCU!"
     }
 ]
 
@@ -42,7 +47,8 @@ app.get('/posts/new', (req, res) => {
 
 app.post('/posts', (req, res) => {
     let { username, content } = req.body;
-    posts.push({ username, content });
+    let id = uuidv4();
+    posts.push({ id, username, content });
     res.redirect('/posts');
 });
 
@@ -50,4 +56,24 @@ app.get('/posts/:id', (req, res) => {
     let { id } = req.params;
     let post = posts.find(p => p.id === id);
     res.render('show.ejs', { post });
+});
+
+app.patch('/posts/:id', (req, res) => {
+    let { id } = req.params;
+    let newContent = req.body.content;
+    let post = posts.find(p => p.id === id);
+    post.content = newContent;
+    res.redirect('/posts');
+});
+
+app.get('/posts/:id/edit', (req, res) => {
+    let { id } = req.params;
+    let post = posts.find(p => p.id === id);
+    res.render('edit.ejs', { post });
+});
+
+app.delete('/posts/:id', (req, res) => {
+    let { id } = req.params;
+    posts = posts.filter(p => p.id !== id);
+    res.redirect('/posts');
 });
