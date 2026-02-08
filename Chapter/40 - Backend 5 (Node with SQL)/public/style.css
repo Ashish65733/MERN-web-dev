@@ -1,0 +1,83 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+table {
+    margin-top: 15px;
+    width: 100%;
+    max-width: 1250px;
+    border-collapse: collapse;
+    background: #F4F3EE;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #BCB8B1;
+}
+
+th {
+    background-color: #463F3A;
+    color: white;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #BCB8B1;
+}
+
+form {
+    background: #f0ebd8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+}
+
+td form {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    width: auto;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    background: #748cab;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.8;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+form[action="/user/new"] button { background-color: #0ead69; color: white;} /* Add User */
+form[action*="edit"] button { background-color: #2980b9; color: white; } /* Edit */
+form[action*="delete"] button { background-color: #c1121f; color: white; } /* Delete */
