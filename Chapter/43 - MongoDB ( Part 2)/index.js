@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 main().then(() => {
@@ -91,10 +90,37 @@ const User = mongoose.model("User", userSchema);
 //     });
 
 
-User.findOneAndUpdate({name : "sadie"}, {age : 24}, { new : true })
-    .then((res) => {
-        console.log(res);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+// User.findOneAndUpdate({name : "sadie"}, {age : 24}, { new : true })
+//     .then((res) => {
+//         console.log(res);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
+
+
+// User.deleteOne({name : "Khush"})
+//     .then((res) => {
+//         console.log(res);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
+
+// User.deleteMany({age : 20})
+//     .then((res) => {
+//         console.log(res);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
+
+// User.findByIdAndDelete('6990aad346a873800d440ee1')
+//     .then((res) => {
+//         console.log(res);
+//     })
+//     .catch((err) => {
+//         console.log(err);
+//     });
+
+
