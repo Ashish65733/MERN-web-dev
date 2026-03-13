@@ -12,10 +12,10 @@ const listingSchema = new Schema({
     url: {
       type: String,
       default:
-        "https://lh3.googleusercontent.com/gg/AMW1TPpHjSrl3T7KHBbLbt3u-2VPi_CrbazzCezNWXqLBlY2doxjhDNrgYGG67qsL1QgMCklHal_-fA1mkYSnxS9Md7xxGbgS0j99BfUhyIT9aOdJY4vDZ3vVAopp13agp-gN0gp45Y2J3HcZpX1QgX-XdOY3pGfVAZ4PzfiGnJCId7JK6ZHIHky=s1600-rj-mp2",
+        "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       set: (v) =>
         v === ""
-          ? "https://lh3.googleusercontent.com/gg/AMW1TPpHjSrl3T7KHBbLbt3u-2VPi_CrbazzCezNWXqLBlY2doxjhDNrgYGG67qsL1QgMCklHal_-fA1mkYSnxS9Md7xxGbgS0j99BfUhyIT9aOdJY4vDZ3vVAopp13agp-gN0gp45Y2J3HcZpX1QgX-XdOY3pGfVAZ4PzfiGnJCId7JK6ZHIHky=s1600-rj-mp2"
+          ? "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           : v,
     },
   },
