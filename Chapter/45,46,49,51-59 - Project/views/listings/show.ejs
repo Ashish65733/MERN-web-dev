@@ -1,39 +1,80 @@
 <% layout("/layouts/boilerplate") %>
 
 <div class="row mt-4 mb-5">
-    <div class="col-8 offset-2">
-        <h3 class="mb-3"><%= listing.title %></h3>
-    </div>
-    
-    <div class="card col-8 offset-2 border-0 shadow-sm">
-        <img 
-            src="<%= listing.image.url %>" 
-            class="card-img-top rounded-3" 
-            alt="listing_image" 
-            style="height: 40vh; object-fit: cover;"
-        >
-        
-        <div class="card-body px-0 mt-2">
-            <p class="card-text">
-                <%= listing.description %>
-            </p>
-            <p class="card-text">
-                <b>Price:</b> &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %> / night
-            </p>
-            <p class="card-text">
-                <b>Location:</b> <i class="fa-solid fa-location-dot me-1"></i><%= listing.location %>
-            </p>
-            <p class="card-text">
-                <b>Country:</b> <i class="fa-solid fa-globe me-1"></i><%= listing.country %>
-            </p>
-        </div>
-    </div>
+  <div class="col-8 offset-2">
+    <h3 class="mb-3"><%= listing.title %></h3>
+  </div>
 
-    <div class="col-8 offset-2 d-flex mt-2">
-        <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark me-3 px-4">Edit</a>
-        
-        <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-            <button class="btn btn-danger px-4">Delete</button>
-        </form>
+  <div class="card col-8 offset-2 border-0 shadow-sm">
+    <img
+      src="<%= listing.image.url %>"
+      class="card-img-top rounded-3"
+      alt="listing_image"
+      style="height: 40vh; object-fit: cover;"
+    />
+
+    <div class="card-body px-0 mt-2">
+      <p class="card-text"><%= listing.description %></p>
+      <p class="card-text">
+        <b>Price:</b> &#8377; <%= listing.price ?
+        listing.price.toLocaleString("en-IN") : "N/A" %> / night
+      </p>
+      <p class="card-text">
+        <b>Location:</b> <i class="fa-solid fa-location-dot me-1"></i><%=
+        listing.location %>
+      </p>
+      <p class="card-text">
+        <b>Country:</b> <i class="fa-solid fa-globe me-1"></i><%=
+        listing.country %>
+      </p>
     </div>
+  </div>
+
+  <div class="col-8 offset-2 d-flex mt-2">
+    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark me-3 px-4"
+      >Edit</a
+    >
+
+    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+      <button class="btn btn-danger px-4">Delete</button>
+    </form>
+  </div>
+
+  <div class="col-8 offset-2 mb-3">
+    <hr />
+    <h4>Leave a Review</h4>
+    <form
+      action="/listings/<%= listing._id %>/reviews"
+      method="POST"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="mb-3 mt-3">
+        <label for="rating" class="form-label">Rating</label>
+        <input
+          type="range"
+          min="1"
+          max="5"
+          id="rating"
+          name="review[rating]"
+          class="form-range"
+        />
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="comment" class="form-label">Comments</label>
+        <textarea
+          name="review[comment]"
+          id="comment"
+          cols="30"
+          rows="5"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">
+            Please add some comments for review
+        </div>
+      </div>
+      <button class="btn btn-outline-dark">Submit</button>
+    </form>
+  </div>
 </div>
