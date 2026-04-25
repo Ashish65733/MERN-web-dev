@@ -47,7 +47,7 @@
       action="/listings/<%= listing._id %>/reviews"
       method="POST"
       novalidate
-      class="needs-validation"
+      class="needs-validation mb-3"
     >
       <div class="mb-3 mt-3">
         <label for="rating" class="form-label">Rating</label>
@@ -70,11 +70,29 @@
           class="form-control"
           required
         ></textarea>
-        <div class="invalid-feedback">
-            Please add some comments for review
-        </div>
+        <div class="invalid-feedback">Please add some comments for review</div>
       </div>
       <button class="btn btn-outline-dark">Submit</button>
     </form>
+
+    <% if(listing.reviews.length != 0) { %>
+    <p><b>All Reviews</b></p>
+    <div class="row">
+      <% for(review of listing.reviews) { %>
+      <div class="card col-5 ms-3 mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Jane Doe</h5>
+          <p class="card-text"><%= review.comment %></p>
+          <p class="card-text"><%= review.rating %> stars</p>
+          <form
+            method="POST"
+            action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+            class="mb-2"
+          ><button class="btn btn-sm btn-dark">Delete</button></form>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
   </div>
 </div>
