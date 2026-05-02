@@ -36,9 +36,12 @@ module.exports.createListing = async (req, res) => {
   // if (result.error) {
   //   throw new ExpressError(400, result.error);
   // }
+  let url = req.file.path;
+  let filename = req.file.filename;
 
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
+  newListing.image = { url, filename };
   // if(!newListing.title){
   //   throw new ExpressError(400, "Title is missing!");
   // }
