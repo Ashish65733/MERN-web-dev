@@ -1,4 +1,5 @@
 const Listing = require("../models/listing");
+const axios = require("axios"); 
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
@@ -23,7 +24,11 @@ module.exports.showListing = async (req, res) => {
     req.flash("error", "Listing you request for does not exist!");
     return res.redirect("/listings");
   }
-  res.render("listings/show.ejs", { listing });
+
+  res.render("listings/show", {
+    listing,
+    mapToken: process.env.MAP_TOKEN,  
+  });
 };
 
 module.exports.createListing = async (req, res) => {
@@ -39,9 +44,25 @@ module.exports.createListing = async (req, res) => {
   let url = req.file.path;
   let filename = req.file.filename;
 
-  const newListing = new Listing(req.body.listing);
-  newListing.owner = req.user._id;
-  newListing.image = { url, filename };
+  const { location, country } = req.body.listing;
+
+   // Geocode the location using MapTiler API
+  const geoRes = await axios.get(
+    `https://api.maptiler.com/geocoding/${encodeURIComponent(location + ", " + country)}.json?key=${process.env.MAP_TOKEN}`
+  );
+
+  const coords = geoRes.data.features[0]?.geometry?.coordinates || [0, 0];
+
+  const newListing = new Listing({
+    ...req.body.listing,
+    owner: req.user._id,
+    image: { url, filename },
+    geometry: {
+      type: "Point",
+      coordinates: coords,  // [lng, lat] from MapTiler
+    },
+  });
+
   // if(!newListing.title){
   //   throw new ExpressError(400, "Title is missing!");
   // }
@@ -64,7 +85,10 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash("error", "Listing you request for does not exist!");
     return res.redirect("/listings");
   }
-  res.render("listings/edit.ejs", { listing });
+
+  let originalImageUrl = listing.image.url;
+  originalImageUrl = originalImageUrl.replace("/upload", "/upload/w_400");
+  res.render("listings/edit.ejs", { listing, originalImageUrl });
 };
 
 module.exports.updateListing = async (req, res) => {
@@ -72,7 +96,14 @@ module.exports.updateListing = async (req, res) => {
   //   throw new ExpressError(400, "Send valid data for listing");
   // }
   let { id } = req.params;
-  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+
+  if(typeof req.file !== "undefined"){
+    let url = req.file.path;
+    let filename = req.file.filename;
+    listing.image = { url, filename };
+    await listing.save();
+  }
   req.flash("success", "Listing updated successfully!");
   res.redirect(`/listings/${id}`);
 };
