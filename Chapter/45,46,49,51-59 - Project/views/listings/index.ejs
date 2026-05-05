@@ -1,5 +1,105 @@
 <% layout("/layouts/boilerplate") %>
 
+<style>
+    #filters {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        overflow-x: auto;
+    }
+
+    .filter{
+        text-align: center;
+        margin-right: 1rem;
+        margin-top: 1rem;
+        opacity: 0.7;
+    }
+    .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+    }
+    .filter p{
+        font-size: 0.8rem;
+    }
+    .tax-info{
+        display: none;
+    }
+    .tax-toggle{
+        border: 1px solid black;
+        border-radius: 15px;
+        height: 2.75rem;
+        padding: 1rem;
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+    .form-switch .form-check-input  {
+        border-color: #ff385c;
+        box-shadow: none;
+    }
+    .form-check-input:checked {
+        background-color: #ff385c; 
+        border-color: #ff385c;
+    }
+    .filter.active {
+        color: #000000 !important;
+        opacity: 1 !important;
+        border-bottom: 2px solid #000000;
+    }
+</style>
+
+<div id="filters" class="d-flex flex-nowrap gap-3 overflow-x-auto">
+    <a href="/listings?category=trending" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= !currentCategory ? 'active' : '' %>">
+        <div><i class="fa-solid fa-fire fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Trending</p>
+    </a>
+    <a href="/listings?category=rooms" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'rooms' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-bed fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Rooms</p>
+    </a>
+    <a href="/listings?category=iconic-cities" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'iconic-cities' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-city fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Iconic Cities</p>
+    </a>
+    <a href="/listings?category=mountains" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'mountains' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-mountain-city fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Mountains</p>
+    </a>
+    <a href="/listings?category=castles" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'castles' ? 'active' : '' %>">
+        <div><i class="fa-brands fa-fort-awesome fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Castles</p>
+    </a>
+    <a href="/listings?category=amazing-pools" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'amazing-pools' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-water-ladder fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Amazing Pools</p>
+    </a>
+    <a href="/listings?category=camping" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'camping' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-campground fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Camping</p>
+    </a>
+    <a href="/listings?category=farms" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'farms' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-tractor fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Farms</p>
+    </a>
+    <a href="/listings?category=arctic" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'arctic' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-snowflake fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Arctic</p>
+    </a>
+    <a href="/listings?category=domes" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'domes' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-landmark-dome fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Domes</p>
+    </a>
+    <a href="/listings?category=boats" class="filter text-center text-secondary text-decoration-none d-flex flex-column align-items-center justify-content-between <%= currentCategory === 'boats' ? 'active' : '' %>">
+        <div><i class="fa-solid fa-landmark-dome fs-5"></i></div>
+        <p class="mb-0 fs-8 fw-semibold">Boats</p>
+    </a>
+    <div class="tax-toggle">
+        <div class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Display Total after taxes</label>
+        </div>
+    </div>
+</div>
 <div class="container my-4">
     <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 g-4">
         <% for(let listing of allListings) { %>
@@ -20,6 +120,7 @@
                         
                         <p class="card-text fw-bold">
                             &#8377;<%= listing.price.toLocaleString("en-IN") %> / night
+                            <i class="tax-info">&nbsp; &nbsp;+18% GST</i>
                         </p>
                     </div>
                 </div>
@@ -27,3 +128,13 @@
             <% } %>
     </div>
 </div>
+
+<script>
+    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    taxSwitch.addEventListener("change", function() {
+        let taxInfoElements = document.querySelectorAll(".tax-info");
+        taxInfoElements.forEach(el => {
+            el.style.display = taxSwitch.checked ? "inline" : "none";
+        });
+    });
+</script>

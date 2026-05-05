@@ -4,7 +4,13 @@
     <br />
     <h3>Create a New Listing</h3>
 
-    <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+    <form
+      method="POST"
+      action="/listings"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -52,33 +58,205 @@
         />
       </div>
 
-      <div class="row">
+      <div class="mb-4">
+        <label class="form-label mb-3"
+          >Select Categories (You can select multiple) : </label
+        >
 
+        <div class="d-flex flex-wrap gap-2">
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="trending"
+            id="cat-trending"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-trending"
+          >
+            <i class="fa-solid fa-fire me-1"></i> Trending
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="rooms"
+            id="cat-rooms"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-rooms"
+          >
+            <i class="fa-solid fa-bed me-1"></i> Rooms
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="iconic-cities"
+            id="cat-cities"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-cities"
+          >
+            <i class="fa-solid fa-city me-1"></i> Iconic Cities
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="mountains"
+            id="cat-mountains"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-mountains"
+          >
+            <i class="fa-solid fa-mountain-city me-1"></i> Mountains
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="castles"
+            id="cat-castles"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-castles"
+          >
+            <i class="fa-brands fa-fort-awesome me-1"></i> Castles
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="amazing-pools"
+            id="cat-pools"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-pools"
+          >
+            <i class="fa-solid fa-water-ladder me-1"></i> Amazing Pools
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="camping"
+            id="cat-camping"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-camping"
+          >
+            <i class="fa-solid fa-campground me-1"></i> Camping
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="farms"
+            id="cat-farms"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-farms"
+          >
+            <i class="fa-solid fa-tractor me-1"></i> Farms
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="arctic"
+            id="cat-arctic"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-arctic"
+          >
+            <i class="fa-solid fa-snowflake me-1"></i> Arctic
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="domes"
+            id="cat-domes"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-domes"
+          >
+            <i class="fa-solid fa-landmark-dome me-1"></i> Domes
+          </label>
+
+          <input
+            type="checkbox"
+            class="btn-check"
+            name="listing[category]"
+            value="boats"
+            id="cat-boats"
+            autocomplete="off"
+          />
+          <label
+            class="btn btn-outline-secondary rounded-pill px-3 py-2"
+            for="cat-boats"
+          >
+            <i class="fa-solid fa-water me-1"></i> Boats
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="mb-3 col-md-4">
           <label for="price" class="form-label">Price</label>
           <input
-          name="listing[price]"
-          placeholder="enter price"
-          id="price"
-          class="form-control"
-          Required
-        />
-        <div class="invalid-feedback">Price should be valid</div>
-      </div>
+            name="listing[price]"
+            placeholder="enter price"
+            id="price"
+            class="form-control"
+            Required
+          />
+          <div class="invalid-feedback">Price should be valid</div>
+        </div>
 
-      <div class="mb-3 col-md-8">
-        <label for="country" class="form-label">Country</label>
-        <input
-        type="text"
-        name="listing[country]"
-        placeholder="enter country"
-        id="country"
-        class="form-control"
-        Required
-        />
-        <div class="invalid-feedback">Country name should be valid</div>
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Country</label>
+          <input
+            type="text"
+            name="listing[country]"
+            placeholder="enter country"
+            id="country"
+            class="form-control"
+            Required
+          />
+          <div class="invalid-feedback">Country name should be valid</div>
+        </div>
       </div>
-    </div>
 
       <div class="mb-3">
         <label for="location" class="form-label">Location</label>

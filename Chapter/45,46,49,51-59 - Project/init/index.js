@@ -1,6 +1,6 @@
 require("dotenv").config({path:"../.env"});
 const mongoose = require("mongoose");
-const initData = require("./data.js");
+const initData = require("./dataWithCateg.js");
 const Listing = require("../models/listing.js");
 const axios = require("axios");
 

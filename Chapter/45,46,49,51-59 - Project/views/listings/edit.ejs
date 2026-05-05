@@ -52,6 +52,78 @@
         />
       </div>
 
+    <div class="mb-4">
+      <label class="form-label fw-bold mb-3">Select Categories (You can select multiple)</label>
+    
+      <div class="d-flex flex-wrap gap-2">
+        <input type="checkbox" class="btn-check" name="listing[category]" value="trending" id="cat-trending" 
+               <%= listing.category.includes('trending') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-trending">
+            <i class="fa-solid fa-fire me-1"></i> Trending
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="rooms" id="cat-rooms" 
+               <%= listing.category.includes('rooms') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-rooms">
+            <i class="fa-solid fa-bed me-1"></i> Rooms
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="iconic-cities" id="cat-cities" 
+               <%= listing.category.includes('iconic-cities') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-cities">
+            <i class="fa-solid fa-city me-1"></i> Iconic Cities
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="mountains" id="cat-mountains" 
+               <%= listing.category.includes('mountains') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-mountains">
+            <i class="fa-solid fa-mountain-city me-1"></i> Mountains
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="castles" id="cat-castles" 
+               <%= listing.category.includes('castles') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-castles">
+            <i class="fa-brands fa-fort-awesome me-1"></i> Castles
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="amazing-pools" id="cat-pools" 
+               <%= listing.category.includes('amazing-pools') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-pools">
+            <i class="fa-solid fa-water-ladder me-1"></i> Amazing Pools
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="camping" id="cat-camping" 
+               <%= listing.category.includes('camping') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-camping">
+            <i class="fa-solid fa-campground me-1"></i> Camping
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="farms" id="cat-farms" 
+               <%= listing.category.includes('farms') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-farms">
+            <i class="fa-solid fa-tractor me-1"></i> Farms
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="arctic" id="cat-arctic" 
+               <%= listing.category.includes('arctic') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-arctic">
+            <i class="fa-solid fa-snowflake me-1"></i> Arctic
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="domes" id="cat-domes" 
+               <%= listing.category.includes('domes') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-domes">
+            <i class="fa-solid fa-landmark-dome me-1"></i> Domes
+        </label>
+
+        <input type="checkbox" class="btn-check" name="listing[category]" value="boats" id="cat-boats" 
+               <%= listing.category.includes('boats') ? 'checked' : '' %> autocomplete="off">
+        <label class="btn btn-outline-secondary rounded-pill px-3 py-2" for="cat-boats">
+            <i class="fa-solid fa-water me-1"></i> Boats
+        </label>
+      </div>
+    </div>
+
       <div class="row">
         <div class="mb-3 col-md-4">
           <label for="price" class="form-label">Price</label>

@@ -14,13 +14,32 @@ module.exports.listingSchema = joi.object({
           filename: joi.string().allow("", null),
         })
         .allow("", null),
+      category: joi.array()
+        .items(
+          joi.string().valid(
+            "trending",
+            "rooms",
+            "iconic-cities",
+            "mountains",
+            "castles",
+            "amazing-pools",
+            "camping",
+            "farms",
+            "arctic",
+            "domes",
+            "boats",
+          ),
+        )
+        .single().required(),
     })
     .required(),
 });
 
 module.exports.reviewSchema = joi.object({
-  review: joi.object({
-    rating: joi.number().required().min(1).max(5),
-    comment: joi.string().required(),
-  }).required(),
+  review: joi
+    .object({
+      rating: joi.number().required().min(1).max(5),
+      comment: joi.string().required(),
+    })
+    .required(),
 });

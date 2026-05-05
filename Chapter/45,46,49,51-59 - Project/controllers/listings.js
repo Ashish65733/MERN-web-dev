@@ -2,8 +2,16 @@ const Listing = require("../models/listing");
 const axios = require("axios"); 
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+  let { category } = req.query;
+    
+    // If a category is selected, filter by it, otherwise get all
+    let allListings;
+    if (category && category.length > 0) {
+        allListings = await Listing.find({ category: { $in: [category] } });
+    } else {
+        allListings = await Listing.find({});
+    }
+  res.render("listings/index.ejs", { allListings, currentCategory: category || "" });
 };
 
 module.exports.renderNewForm = (req, res) => {

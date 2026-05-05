@@ -113,9 +113,9 @@ app.use((err, req, res, next) => {
   // res.status(statusCode).send(message);
 });
 
-app.get("/", (req, res) => {
-  res.send("Hi, i'm root");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hi, i'm root");
+// });
 
 app.listen(8080, () => {
   console.log("Server is running on port 8080");
