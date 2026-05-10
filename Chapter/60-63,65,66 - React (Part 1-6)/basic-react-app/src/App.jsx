@@ -1,8 +1,9 @@
-import "./App.css";
+// import "./App.css";
 import Title from "./Title";
 // import {Title} from './Title' --> in case of named export
 import { Description } from "./Description";
 import ProductTab from "./ProductTab";
+import ItemGrid from "./ItemGrid";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
 
     <>
       <ProductTab />
+      <h2 style={{ textAlign: "center" }}>Blockbuster Deals | Shop Now</h2>
+      <ItemGrid/>
     </>
   );
 }

@@ -1,0 +1,15 @@
+.itemCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 14px;
+    /* padding: 15px 0px; */
+    justify-content: center;
+}
+
+.itemCard h4, 
+.itemCard p {
+  margin: 0; /* Removes the default spacing */
+  padding: 5px 0; /* Add a little padding if they are too close */
+}

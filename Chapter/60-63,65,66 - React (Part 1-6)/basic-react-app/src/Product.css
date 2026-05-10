@@ -1,7 +1,12 @@
 .Product {
-  border: 1px solid white;
+  border: 1px solid black;
   border-radius: 14px;
   margin: 15px auto;
-  padding: 0 10px 0 10px;
-  width: 300px;
+  padding: 25px 0px;
+  width: 30%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
