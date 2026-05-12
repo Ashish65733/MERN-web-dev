@@ -1,4 +1,4 @@
-/* :root {
+:root {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -53,11 +53,10 @@
 body {
   margin: 0;
 }
-*/
+
 #root {
   width: 1126px;
   max-width: 100%;
-  height: 100vh;
   margin: 0 auto;
   text-align: center;
   justify-content: center;
@@ -66,8 +65,8 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-} 
-/* 
+}
+
 h1,
 h2 {
   font-family: var(--heading);
@@ -93,10 +92,10 @@ h2 {
     font-size: 20px;
   }
 }
-
 p {
   margin: 0;
-} */
+}
+
 code,
 .counter {
   font-family: var(--mono);
