@@ -1,0 +1,55 @@
+.comments-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.comments-form-container h4 {
+  margin: 0 0 4px 0;
+  text-align: left;
+}
+
+.comments-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-group input[type="range"] {
+  width: 100%;
+  max-width: 200px;
+  margin: 0;
+}
+
+.comments-form-container button[type="submit"] {
+  align-self: flex-start;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 15px;
+}
